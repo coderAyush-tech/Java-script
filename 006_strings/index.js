@@ -1,5 +1,7 @@
 console.log("thutorial of string");
 let a ="ayush";
+let b = "12345";
+
 console.log(a[0]);
 console.log(a[1]);
 console.log(a[2]);
@@ -13,3 +15,5 @@ console.log(a.length);
 // console.log(a.indexOf("s"));
 // console.log(a.indexOf("h"));
 console.log(`${a}`)
+b[0] = 21;
+console.log(b)
