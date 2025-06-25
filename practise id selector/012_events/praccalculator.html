@@ -1,0 +1,127 @@
+<title>Calculator</title>
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background: #f1f1f1;
+      font-family: Arial, sans-serif;
+    }
+
+    .calculator {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(103, 70, 70, 0.1);
+      width: 300px;
+    }
+
+    .display {
+      width: 100%;
+      height: 60px;
+      background: #222;
+      color: #fff;
+      font-size: 2rem;
+      text-align: right;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .buttons {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+    }
+
+    button {
+      padding: 20px;
+      font-size: 1.2rem;
+      border: none;
+      border-radius: 8px;
+      background-color: #e0e0e0;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    button:hover {
+      background-color: #d4d4d4;
+    }
+
+    .operator {
+      background-color: #f39c12;
+      color: white;
+    }
+
+    .operator:hover {
+      background-color: #e67e22;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="calculator">
+    <div class="display" id="display">0</div>
+    <div class="buttons">
+      <button id="7">7</button>
+      <button id="8">8</button>
+      <button id="9">9</button>
+      <button class="operator">/</button>
+
+      <button id="4">4</button>
+      <button id="5">5</button>
+      <button id="6">6</button>
+      <button class="operator">*</button>
+
+      <button id="1">1</button>
+      <button id="2">2</button>
+      <button id="3">3</button>
+      <button class="operator">-</button>
+
+      <button id="0">0</button>
+      <button id=".">.</button>
+      <button id="equals">=</button>
+      <button class="operator">+</button>
+
+      <button id="clear">C</button>
+<button id="backspace">⌫</button>
+<button id="escape">Esc</button>
+<button id="delete">Del</button>
+    </div>
+  </div>
+  <script>
+const dis = document.getElementById("display");
+const buttons = document.querySelectorAll(".buttons button");
+let expression = "";
+buttons.forEach(button=>{
+    button.addEventListener("click",()=>{
+        const value = button.innerText;
+
+        switch(value){
+            case  "=":
+                try{
+                    expression  = eval(expression).toString();
+
+                }catch{
+                    expression = "Error"
+                }
+                break;
+                case "C":
+                case "Del":
+                case "Esc":
+                    expression = "";
+                    break;
+                    case "⌫":
+        expression = expression.slice(0, -1);
+        break;
+      default:
+        expression += value;
+    
+        }
+        dis.innerText = expression || "0";
+    });
+});
+</script>
+</body>
+</html>

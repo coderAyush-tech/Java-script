@@ -1,0 +1,14 @@
+let a = 2;
+let b = 2.5;
+let c = "ayush";
+let d = true;
+let e = [1,2,3,4,5,];
+let f = 111111111111111111111111111111111111111111111111111111111111111111111111111111;
+let g = null;
+console.log(typeof(a));
+console.log(typeof(b));
+console.log(typeof(c));
+console.log(typeof(d));
+console.log(typeof(e));
+console.log(typeof(f));
+console.log(typeof(g));

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       .box{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            border-radius: 10px;
+        }
+
+ 
+    </style>
+</head>
+<body>
+    <div class="box">
+        hi
+    </div>
+
+    <script>
+        let box =  document.querySelector(".box");
+        box.addEventListener("mouseenter",()=>{
+            box.style.backgroundColor = "blue";
+            box.style.color = "yellow";
+           
+        })
+
+        box.addEventListener("mouseleave",()=>{
+            box.style.backgroundColor="red";
+        })
+
+
+    </script>
+</body>
+</html>

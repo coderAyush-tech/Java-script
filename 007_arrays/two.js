@@ -5,7 +5,7 @@ while(i){
      i = Number(prompt("enter the number:"));
     if(i ==0){
         break;
-    
+        
         
         
     }

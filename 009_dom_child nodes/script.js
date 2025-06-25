@@ -1,16 +1,15 @@
-console.log("hello world");
-console.log(document.body);
-console.log(document.body.childNodes);
-console.log(document.body.childNodes[1]);
-console.log(document.body.childNodes[1].childNodes);
-let cont = document.body.childNodes[1];
-console.log(cont.firstChild);
-console.log(cont.lastChild);
-console.log(cont.firstElementChild);
-console.log(cont.lastElementChild);
-cont.firstElementChild.style.color="red";
-console.log(cont.lastChild.parentNode)
-console.log(document.body.firstElementChild)
-console.log(document.body.firstElementChild.nodes)
-console.log(document.body.firstElementChild.children)
-console.log(document.body.firstElementChild[3].previousElementSibling)
+console.log("hello wolrd");
+
+// console.log(window.document.body);
+// console.log(document.body.childNodes);
+// console.log(document.body.childNodes[0]);
+// let cont = document.body.childNodes[0];
+// console.log(cont.nextSibling);
+// console.log(document.body.firstChild);
+console.log(document.body.children[0].children.length);
+let cont1 = document.body.children[0].children[0];
+cont1.style.color = "red";
+cont1.style.backgroundColor = "yellow";
+cont1.style.fontSize = "20px";
+cont1.style.border = "2px solid black";
+cont1.textContent = "Hello World";

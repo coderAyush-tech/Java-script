@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    #log {
+      margin-top: 10px;
+      font-family: monospace;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <input type="text" id="textInput" placeholder="Type something..." />
+  <div id="log"></div>
+
+  <script>
+    const input = document.getElementById('textInput');a
+    const log = document.getElementById('log');
+
+    input.addEventListener('input', (event) => {
+      const char = event.data || '';
+      log.textContent += char;
+    });
+
+    input.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        log.textContent += '\nYou pressed Enter!\n';
+      }
+    });
+  </script>
+
+</body>
+</html>e
