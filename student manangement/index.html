@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Styled Signup Form</title>
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+        background: linear-gradient(135deg, #e0f7fa 0%, #80deea 100%);
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 2rem;
+      }
+
+      form {
+        background: rgba(255, 255, 255, 0.95);
+        padding: 2.5rem;
+        border-radius: 1.5rem;
+        max-width: 450px;
+        width: 100%;
+        box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        backdrop-filter: blur(15px);
+        margin-bottom: 2rem;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      form:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      input[type="text"],
+      input[type="file"] {
+        width: 100%;
+        padding: 0.75rem 1rem;
+        margin: 0.75rem 0;
+        border: 1px solid #e0e0e0;
+        border-radius: 0.75rem;
+        font-size: 1rem;
+        background-color: #f9f9f9;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      }
+
+      input[type="text"]:focus,
+      input[type="file"]:focus {
+        outline: none;
+        border-color: #00bcd4;
+        box-shadow: 0 0 8px rgba(0, 188, 212, 0.3);
+      }
+
+      button {
+        background: linear-gradient(90deg, #00bcd4, #0288d1);
+        color: white;
+        padding: 0.75rem 1.5rem;
+        margin: 0.5rem 0.5rem 0 0;
+        border: none;
+        border-radius: 0.75rem;
+        cursor: pointer;
+        font-size: 1rem;
+        font-weight: 500;
+        transition: transform 0.2s ease, background 0.3s ease;
+      }
+
+      button:hover {
+        background: linear-gradient(90deg, #0288d1, #01579b);
+        transform: translateY(-2px);
+      }
+
+      button:active {
+        transform: translateY(0);
+      }
+
+      .BOX {
+        max-width: 700px;
+        width: 100%;
+        margin: 2rem auto;
+      }
+
+      .BOX h1 {
+        background: rgba(255, 255, 255, 0.9);
+        border-left: 6px solid #00bcd4;
+        padding: 1.25rem;
+        margin: 1rem 0;
+        font-size: 1.1rem;
+        border-radius: 0.75rem;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        color: #222;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        transition: transform 0.3s ease;
+      }
+
+      .BOX h1:hover {
+        transform: translateX(5px);
+      }
+
+      .BOX img {
+        max-width: 60px;
+        height: auto;
+        border-radius: 0.5rem;
+        box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+        object-fit: cover;
+      }
+
+      #same {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      @media (max-width: 600px) {
+        form {
+          padding: 1.5rem;
+        }
+
+        button {
+          padding: 0.6rem 1rem;
+          font-size: 0.9rem;
+        }
+
+        .BOX h1 {
+          font-size: 1rem;
+          padding: 1rem;
+        }
+
+        .BOX img {
+          max-width: 50px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <form id="signupForm">
+      <input type="text" id="name" placeholder="Enter your name" required />
+      <input type="text" id="id" placeholder="Enter your email" required />
+      <input type="file" id="image" accept="image/*" required />
+      <button type="submit">Submit</button>
+      <button type="button" id="showAllBtn">Show All</button>
+      <button type="button" id="search">Search</button>
+      <button type="button" id="update">Update</button>
+      <button type="button" id="Delete">Delete</button>
+      <button type="button" id="DeleteAll">Delete All</button>
+    </form>
+
+    <div class="BOX"></div>
+
+    <script>
+      function Student(name, id, image) {
+        this.name = name;
+        this.id = id;
+        this.image = image;
+      }
+
+      let srr = [];
+
+      const form = document.getElementById("signupForm");
+      const showAllBtn = document.getElementById("showAllBtn");
+      const outerdiv = document.querySelector(".BOX");
+      const deleteall = document.getElementById("DeleteAll")
+        const deleted = document.getElementById("Delete")
+;
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        let name = form[0].value;
+        let id = form[1].value;
+        let imageFile = form[2].files[0];
+        let image = imageFile ? URL.createObjectURL(imageFile) : "";
+
+        let s1 = new Student(name, id, image);
+        srr.push(s1);
+        form
+
+.reset();
+      });
+
+      // show all
+
+      showAllBtn.addEventListener("click", function () {
+        outerdiv.innerHTML = "";
+        srr.forEach((e) => {
+          let div = document.createElement("div");
+          div.innerHTML = `<h1 id="same" >name : ${e.name} | id : ${e.id} 
+          <img src="${e.image}" alt="Image">
+        </h1>`;
+          outerdiv.append(div);
+        });
+      });
+
+      //delete all
+      deleteall.addEventListener("click", function () {
+        srr = [];
+        outerdiv.innerHTML = "";
+      });
+
+      //  Update Functionality
+      const updateBtn = document.getElementById("update");
+
+      updateBtn.addEventListener("click", function () {
+        const updateId = prompt("Enter the ID of the student to update:");
+        const student = srr.find((s) => s.id === updateId);
+
+        if (!student) {
+          alert("Student not found.");
+          return;
+        }
+
+        const newName = prompt("Enter new name:", student.name);
+        const newImage = prompt(
+          "Enter new image URL (leave blank to keep current):",
+          student.image
+        );
+
+        if (newName) student.name = newName;
+        if (newImage) student.image = newImage;
+
+        alert("Student info updated!");
+
+        // Optional: auto-show updated result
+        outerdiv.innerHTML = `<h1 id="same">name : ${student.name} | id : ${student.id}
+    <img src="${student.image}" alt="Image">
+  </h1>`;
+      });
+
+      //search
+      let searc = document.getElementById("search");
+
+      searc.addEventListener("click", function () {
+        const sea = prompt("Enter the ID");
+        const stud = srr.find((s) => s.id === sea);
+
+        outerdiv.innerHTML = "";
+
+        if (stud) {
+          const div = document.createElement("div");
+          div.innerHTML = `<h1 id="same">name : ${stud.name} | id : ${stud.id}
+      <img src="${stud.image}" alt="Image">
+    </h1>`;
+          outerdiv.appendChild(div);
+        } else {
+          alert("No student found with that ID.");
+        }
+      });
+
+      //delete
+    
+deleted.addEventListener("click", function () {
+  const sea = prompt("Enter the ID to delete:");
+  const index = srr.findIndex((s) => s.id === sea);
+
+  if (index !== -1) {
+    srr.splice(index, 1); // remove 1 item at the found index
+    alert("Student deleted successfully!");
+    outerdiv.innerHTML = "";
+
+    // Optional: show remaining students
+    srr.forEach((e) => {
+      const div = document.createElement("div");
+      div.innerHTML = `<h1 id="same">name : ${e.name} | id : ${e.id}
+        <img src="${e.image}" alt="Image">
+      </h1>`;
+      outerdiv.appendChild(div);
+    });
+  } else {
+    alert("No student found with that ID.");
+  }
+});
+      
+    </script>
+  </body>
+</html>
